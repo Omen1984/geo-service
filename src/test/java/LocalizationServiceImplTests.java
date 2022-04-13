@@ -1,8 +1,13 @@
+import org.hamcrest.Matcher;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.netology.entity.Country;
 import ru.netology.i18n.LocalizationServiceImpl;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
 
 public class LocalizationServiceImplTests {
     static LocalizationServiceImpl sut;
@@ -30,6 +35,6 @@ public class LocalizationServiceImplTests {
     public void test_locale_NotEquals() {
         String expected = "Welcome";
         String result = sut.locale(Country.RUSSIA);
-        Assertions.assertEquals(expected, result);
+        assertThat(result, not(expected));
     }
 }
